@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ recipe['Recipe Name'] }} - Details</title>
+    <style>
+        /* Internal CSS for styling */
+        body {
+            display: flex; /* Use flexbox for centering */
+            justify-content: center; /* Center horizontally */
+            align-items: center; /* Center vertically */
+            height: 100vh; /* Full viewport height */
+            margin: 0; /* Remove default margin */
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+        }
+
+        .recipe-container {
+            display: flex; /* Use flexbox for horizontal layout */
+            flex-direction: row; /* Align children in a row */
+            width: 100%; /* Take full width for smaller screens */
+            max-width: 800px; /* Set a maximum width for broader appearance */
+            margin: 20px; /* Margin for spacing */
+            text-align: left; /* Align text to the left */
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 20px; /* Padding around the card */
+        }
+
+        .recipe-image {
+            flex: 1; /* Allow image section to take up one part of the flex */
+            text-align: center; /* Center the image */
+            padding-right: 20px; /* Space between image and text */
+        }
+
+        .recipe-image img {
+            width: 100%;
+            height: auto; /* Maintain aspect ratio */
+            max-width: 300px; /* Set a max width for the image */
+            border-radius: 10px;
+        }
+
+        .recipe-info {
+            flex: 2; /* Allow text section to take up two parts of the flex */
+        }
+
+        h1 {
+            color: #ff7f50;
+            font-size: 24px; /* Adjusted font size for better fit */
+            margin: 10px 0; /* Added margin for spacing */
+        }
+
+        h2 {
+            margin-top: 15px; /* Margin above section titles */
+            font-size: 20px; /* Slightly larger font for section headings */
+        }
+
+        .ingredients, .description {
+            margin-top: 10px; /* Adjusted margin for compactness */
+        }
+
+        .back-button {
+            background-color: #ff6600;
+            color: white;
+            border: none;
+            padding: 10px 15px; /* Button size */
+            cursor: pointer;
+            border-radius: 5px;
+            margin-top: 15px; /* Adjusted margin */
+        }
+
+        .back-button:hover {
+            background-color: #ff4500;
+        }
+    </style>
+</head>
+<body>
+    <div class="recipe-container">
+        <div class="recipe-image">
+            <img src="{{ recipe['Image URL'] }}" alt="{{ recipe['Recipe Name'] }}">
+        </div>
+        <div class="recipe-info">
+            <h1>{{ recipe['Recipe Name'] }}</h1>
+            <div class="ingredients">
+                <h2>Ingredients</h2>
+                <p>{{ recipe['ingredients'] }}</p> <!-- Ensure the ingredients are displayed here -->
+            </div>
+            <div class="description">
+                <h2>Recipe Description</h2>
+                <p>{{ recipe['Recipe Information'] if recipe['Recipe Information'] else 'No description available for this recipe.' }}</p>
+            </div>
+            <button class="back-button" onclick="window.location.href='/'">Back to Home</button>
+        </div>
+    </div>
+</body>
+</html>
